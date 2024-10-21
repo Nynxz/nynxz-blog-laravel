@@ -55,9 +55,9 @@
     @apply rounded-lg bg-Mauve;
 }
 
-.markdown-body img {
-    @apply rounded-lg ring-Mauve ring-2 min-w-0;
-}
+/*.markdown-body img {*/
+/*    @apply rounded-lg ring-Mauve ring-2 min-w-0;*/
+/*}*/
 
 .markdown-body h1, h2, h3, h4, h5, h6 {
     @apply text-Mauve ;

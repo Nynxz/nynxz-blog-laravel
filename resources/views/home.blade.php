@@ -7,7 +7,7 @@
 
             <div class="bg-Surface_0 p-2 w-fit rounded-md m-2 group/a">
                 <div class="relative mx-auto my-2 w-32 h-32 border-Crust border-2 rounded-full ">
-                    <img src="mee.png" alt="icloud me max-w-8 max-h-8"/>
+                    <img src="{{asset('mee.png')}}" alt="icloud me max-w-8 max-h-8"/>
                     <div class="absolute left-0 top-0 w-full h-full inset-0 rounded-full group-hover/a:ring-Mauve group-hover/a:ring-2 animate-pulse"></div>
                 </div>
                 <span class="font-bold underline text-2xl m-2">

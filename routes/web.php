@@ -8,12 +8,17 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/post/{id}', function (Request $request, $id) {
+
     $post = Cache::rememberForever('post_' . $id, function () use ($id) {
-        return Post::where('slug', $id)->firstOrFail()->toArray();
+        return Post::where('slug', $id)->first();
     });
-    return view('post')->with('post', $post);
+
+    return $post
+        ? view('post')->with('post', $post)
+        : redirect()->route('home');
+
 })->name('post')->middleware('throttle:11110,1');
 
 Route::fallback(function () {
-    return redirect('/');
+    return redirect()->route('home');
 });
