@@ -61,7 +61,7 @@
                     <li>
 
                         @if($site == 'pinks.world')
-                            <form action="/confirmation" method="get" class="flex flex-row group cursor-pointer">
+                            <form action="{{route('home', ['warning' => $site])}}" method="get" class="flex flex-row group cursor-pointer">
                                 <input type="text" name="warning" hidden value="{{$site}}">
                                 <button type="submit" class="flex flex-row group cursor-pointer">
                                     <x-icons.www class="w-8 h-8 "/>
