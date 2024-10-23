@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex flex-col p-2 bg-Surface_2/50 border-Crust border-2 rounded-md w-full h-full shadow-black shadow-2xl group/main hover:border-Mauve backdrop-blur-2xl overflow-y-scroll">
+    <div class="flex flex-col p-2 bg-Surface_2/50 border-Crust border-2 rounded-md w-full h-full shadow-black shadow-2xl group/main hover:border-Mauve backdrop-blur-2xl">
         <div class="text-4xl font-bold mx-auto">Hello!</div>
         <div class="w-full rounded-md h-1/2 p-2">
 
