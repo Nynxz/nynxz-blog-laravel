@@ -1,8 +1,31 @@
 <x-layout>
-    <div class="flex flex-col p-2 bg-Surface_2/50 border-Crust border-2 rounded-md w-full h-full shadow-black shadow-2xl group/main hover:border-Mauve backdrop-blur-2xl">
+    <div class="relative flex flex-col p-2 bg-Surface_2/50 border-Crust border-2 rounded-md w-full h-full shadow-black shadow-2xl group/main hover:border-Mauve backdrop-blur-2xl">
+        @if($confirmation)
+        <div class="absolute left-0 top-0 flex flex-grow w-full h-full items-center justify-center pointer-events-none">
+            <div href="/" class="pointer-events-auto p-4 text-center flex justify-center items-center w-1/3 bg-Surface_2  flex-col h-fit rounded-md">
+            <span class="text-center w-full rounded-md text-3xl text-Red">
+                WARNING
+                </span>
+                <span class="text-3xl">NSFW Content Ahead!</span>
+                <span class="text-3xl">(Adult Content, XXXX, Nudity)</span>
+                <span class="flex flex-row gap-4 text-xl font-bold my-8">
+                    <a href="/" class="pointer-events-auto hover:underline hover:text-Red">
+                        Back
+                    </a>
+                    <a href="https://{{$continue}}" class="pointer-events-auto hover:underline hover:text-Green">
+                        Continue
+                    </a>
+                </span>
+            </div>
+        </div>
+        @endif
         <div class="text-4xl font-bold mx-auto">Hello!</div>
-        <div class="w-full rounded-md h-1/2 p-2">
+        <div class="relative w-full rounded-md h-1/2 p-2 -z-10">
 
+
+{{--            @if($confirmation)--}}
+
+{{--            @endif--}}
 
 
             <div class="bg-Surface_0 p-2 w-fit rounded-md m-2 group/a">
@@ -35,11 +58,25 @@
                 </span>
                 <ul class="flex flex-col gap-2 m-2">
                     @foreach(['ssh.ninja', 'expire.tech', 'pinks.world'] as $site)
-                    <li >
-                        <a href="https://{{$site}}" class="flex flex-row group cursor-pointer">
-                            <x-icons.www class="w-8 h-8 "/>
-                            <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
-                        </a>
+                    <li>
+
+                        @if($site == 'pinks.world')
+                            <form action="/confirmation" method="get" class="flex flex-row group cursor-pointer">
+                                <input type="text" name="continue" hidden value="{{$site}}">
+                                <button type="submit" class="flex flex-row group cursor-pointer">
+                                    <x-icons.www class="w-8 h-8 "/>
+                                    <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
+                                </button>
+
+                            </form>
+                        @else
+                            <a href="https://{{$site}}" class="flex flex-row group cursor-pointer">
+                                <x-icons.www class="w-8 h-8 "/>
+                                <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
+                            </a>
+                        @endif
+
+
                     </li>
                     @endforeach
 
