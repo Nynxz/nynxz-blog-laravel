@@ -12,7 +12,9 @@
         </span>
         <hr class="border-Mauve my-2">
             <div class="markdown-body">
+                <!--email_off-->
                 {!!  Str::markdown($post['content'])!!}
+                <!--/email_off-->
             </div>
         </div>
     </div>
