@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (Request $request) {
-    return view('home')->with(['confirmation'=>Session::pull('confirmation'), 'continue'=>Session::pull('continue')]);
+    return view('home')->with(['warning'=> $request->query('warning')]);
 })->name('home');
 
 Route::get('/post/{id}', function (Request $request, $id) {
@@ -26,6 +26,5 @@ Route::fallback(function () {
 
 
 Route::get('/confirmation', function (Request $request) {
-
-    return redirect('/')->with(['confirmation' => true, 'continue' => $request->get('continue', '/')]);
+    return redirect()->route('home', ['warning' =>  $request->get('warning', '/')]);
 });

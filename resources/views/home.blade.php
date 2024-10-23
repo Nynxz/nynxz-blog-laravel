@@ -1,6 +1,6 @@
 <x-layout>
     <div class="relative flex flex-col p-2 bg-Surface_2/50 border-Crust border-2 rounded-md w-full h-full shadow-black shadow-2xl group/main hover:border-Mauve backdrop-blur-2xl">
-        @if($confirmation)
+        @if($warning)
         <div class="absolute left-0 top-0 flex flex-grow w-full h-full items-center justify-center pointer-events-none">
             <div href="/" class="pointer-events-auto p-4 text-center flex justify-center items-center w-1/3 bg-Surface_2  flex-col h-fit rounded-md">
             <span class="text-center w-full rounded-md text-3xl text-Red">
@@ -12,7 +12,7 @@
                     <a href="/" class="pointer-events-auto hover:underline hover:text-Red">
                         Back
                     </a>
-                    <a href="https://{{$continue}}" class="pointer-events-auto hover:underline hover:text-Green">
+                    <a href="https://{{$warning}}" class="pointer-events-auto hover:underline hover:text-Green">
                         Continue
                     </a>
                 </span>
@@ -62,7 +62,7 @@
 
                         @if($site == 'pinks.world')
                             <form action="/confirmation" method="get" class="flex flex-row group cursor-pointer">
-                                <input type="text" name="continue" hidden value="{{$site}}">
+                                <input type="text" name="warning" hidden value="{{$site}}">
                                 <button type="submit" class="flex flex-row group cursor-pointer">
                                     <x-icons.www class="w-8 h-8 "/>
                                     <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
