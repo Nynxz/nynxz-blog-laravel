@@ -16,8 +16,8 @@
     ])
     @endif
 </head>
-<body class="flex flex-row font-sans antialiased text-Text h-full p-2 gap-2">
-<div class="flex flex-col bg-Surface_1/50 w-fit h-full p-2 rounded-md shadow-2xl shadow-black border-Crust border-2 group/a hover:border-Mauve backdrop-blur-2xl">
+<body class="flex flex-col sm:flex-row font-sans antialiased text-Text h-full p-2 gap-2">
+<div class="flex flex-col bg-Surface_1/50 w-fit h-fit sm:h-full p-2 rounded-md shadow-2xl shadow-black border-Crust border-2 group/a hover:border-Mauve backdrop-blur-2xl">
     <a href="{{route('home')}}">
         <div class="flex flex-shrink h-min rounded-md p-2 w-fit text-3xl text-Rosewater  font-extrabold bg-gradient-to-br from-Maroon via-Blue/70 from-10% to-90% to-Mauve m-2 px-6 mx-auto border-Crust border-[1px] select-none">
             Nynxz

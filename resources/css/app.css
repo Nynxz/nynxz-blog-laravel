@@ -410,6 +410,8 @@
     cursor: pointer;
 }
 
+
+
 .markdown-body a:focus,
 .markdown-body [role=button]:focus,
 .markdown-body input[type=radio]:focus,
@@ -914,12 +916,14 @@
 }
 
 .markdown-body pre>code {
-    padding: 0;
-    margin: 0;
-    word-break: normal;
-    white-space: pre;
-    background: transparent;
-    border: 0;
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    !*word-break: keep-all;*!*/
+/*    white-space: pre;*/
+    @apply break-all;
+/*    !*background: transparent;*!*/
+/*    border: 0;*/
+/*    background-color:  red;*/
 }
 
 .markdown-body .highlight {
@@ -944,12 +948,13 @@
 
 .markdown-body pre code,
 .markdown-body pre tt {
-    display: inline;
-    max-width: auto;
-    padding: 0;
-    margin: 0;
+    /*display: inline;*/
+    /*max-width: auto;*/
+    /*padding: 0;*/
+    /*margin: 0;*/
     overflow: visible;
     line-height: inherit;
+    @apply break-words;
     word-wrap: normal;
     background-color: transparent;
     border: 0;
