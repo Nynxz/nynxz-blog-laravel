@@ -35,8 +35,11 @@
                 </span>
                 <ul class="flex flex-col gap-2 m-2">
                     @foreach(['ssh.ninja', 'expire.tech', 'pinks.world'] as $site)
-                    <li class="flex flex-row group cursor-pointer"> <x-icons.www class="w-8 h-8 "/>
-                        <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
+                    <li >
+                        <a href="https://{{$site}}" class="flex flex-row group cursor-pointer">
+                            <x-icons.www class="w-8 h-8 "/>
+                            <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
+                        </a>
                     </li>
                     @endforeach
 
