@@ -47,7 +47,7 @@ class PostController extends Controller
                     'date' => rtrim($f[1]),
                     'topic' => $topic,
                     'slug' => Str::slug($topic.'-'.rtrim($f[0])),
-                    'content' => implode(array_slice($f, 2))
+                    'content' => implode((array)array_slice($f, 2))
                 ])->toArray();
             }
             $posts[$topic] = [
