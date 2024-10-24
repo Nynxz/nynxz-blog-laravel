@@ -1,6 +1,7 @@
-@php use App\Models\Post; @endphp
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-screen w-screen bg-gradient-to-br from-Maroon via-Blue/70 from-10% to-90% to-Mauve">
+@php use App\Http\Controllers\PostController;use App\Models\Post; @endphp
+    <!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+      class="h-screen w-screen bg-gradient-to-br from-Maroon via-Blue/70 from-10% to-90% to-Mauve">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,9 +26,25 @@
     </a>
     <hr class="group-hover/a:border-Mauve border-Surface_2 mx-2 border-2 rounded-full group-hover/a:animate-pulse"/>
     <div class="overflow-y-auto flex flex-col my-2 h-full">
-        @foreach(Post::RecentPosts() as $post)
-            <a href="{{route('post', $post['slug'])}}">{{$post['title']}}</a>
-        @endforeach
+        <ul class=" rounded-md p-2 bg-Base/50 ">
+            <?php $posts = Post::RecentPosts()?>
+            @while($topic = current($posts))
+                <li class="pb-2 ">
+                    <span class=" select-none text-xl font-extrabold">
+                        {{key($posts)}}
+                    </span>
+                    <hr class="border-Mauve">
+                    <ul class="pl-1 text-sm text-Text">
+                    @foreach($topic as $post)
+                        <li class="hover:text-Mauve hover:underline">
+                            <a href="{{route('post', $post['slug'])}}">{{$post['title']}}</a>
+                        </li>
+                    @endforeach
+                    </ul>
+                </li>
+                <?php next($posts)?>
+            @endwhile
+        </ul>
     </div>
 </div>
 <div class="w-full h-full">

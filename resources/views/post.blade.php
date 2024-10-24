@@ -7,7 +7,7 @@
             {{$post['title']}}
             </span>
             <span>
-            {{date('d-m-Y', strtotime($post['created_at']))}}
+            {{$post['date']}}
             </span>
         </span>
         <hr class="border-Mauve my-2">
