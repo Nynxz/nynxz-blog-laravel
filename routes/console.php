@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\PostController;
-use App\Models\Post;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\PostController;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
@@ -18,4 +17,4 @@ Artisan::command('sync', function () {
     $this->info(count($posts).' Groups Synced');
     $this->info($count.' Posts Synced');
 
-})->purpose('Display an inspiring quote')->hourly();
+})->purpose('Sync blog posts to Cache & DB')->daily();
