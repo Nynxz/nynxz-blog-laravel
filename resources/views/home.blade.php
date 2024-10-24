@@ -58,23 +58,22 @@
                 </span>
                 <ul class="flex flex-col gap-2 m-2">
                     @foreach(['ssh.ninja', 'expire.tech', 'pinks.world'] as $site)
-                    <li>
-
-                        @if($site == 'pinks.world')
-                            <form action="{{route('home', ['warning' => $site])}}" method="get" class="flex flex-row group cursor-pointer">
-                                <input type="text" name="warning" hidden value="{{$site}}">
-                                <button type="submit" class="flex flex-row group cursor-pointer">
+                        <li>
+                            @if($site == 'pinks.world')
+{{--                                <form action="{{route('home', ['warning' => $site])}}" method="get"--}}
+{{--                                      class="flex flex-row group cursor-pointer">--}}
+{{--                                    <input type="text" name="warning" hidden value="{{$site}}">--}}
+{{--                                    <button type="submit" class="flex flex-row group cursor-pointer">--}}
+{{--                                        <x-icons.www class="w-8 h-8 "/>--}}
+{{--                                        <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>--}}
+{{--                                    </button>--}}
+{{--                                </form>--}}
+                            @else
+                                <a href="https://{{$site}}" class="flex flex-row group cursor-pointer">
                                     <x-icons.www class="w-8 h-8 "/>
                                     <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
-                                </button>
-
-                            </form>
-                        @else
-                            <a href="https://{{$site}}" class="flex flex-row group cursor-pointer">
-                                <x-icons.www class="w-8 h-8 "/>
-                                <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
-                            </a>
-                        @endif
+                                </a>
+                            @endif
 
 
                     </li>
