@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\PostController;
 use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use function now;
 
 class Post extends Model
 {

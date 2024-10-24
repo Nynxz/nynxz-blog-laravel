@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Cache;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Storage;
 use Str;
-use function array_slice;
-use function implode;
-use function redirect;
-use function rtrim;
-use function view;
 
 class PostController extends Controller
 {
-    public function index(Request $request, $id) {
+    public function index($id): View|RedirectResponse
+    {
         $post = Cache::rememberForever('post_' . $id, function () use ($id) {
             return Post::where('slug', $id)->first();
         });
@@ -25,14 +22,15 @@ class PostController extends Controller
             : redirect()->route('home');
     }
 
-    private static function DeleteAllPosts(){
+    private static function DeleteAllPosts(): void
+    {
 
         $db = Post::all();
         foreach($db as $p){
             $p->delete();
         }
     }
-    public static function SyncPosts()
+    public static function SyncPosts(): array
     {
         PostController::DeleteAllPosts();
 
