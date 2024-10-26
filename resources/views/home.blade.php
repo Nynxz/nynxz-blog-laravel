@@ -19,8 +19,7 @@
             </div>
         </div>
         @endif
-        <div class="text-4xl font-bold mx-auto">Hello!</div>
-        <div class="relative w-full rounded-md h-1/2 p-2 -z-10">
+        <div class="relative w-full rounded-md h-1/2 p-2 -z-10 flex md:flex-row flex-col">
 
 
 {{--            @if($confirmation)--}}
@@ -58,7 +57,23 @@
                     </li>
                 </ul>
             </div>
+            <div class="bg-Surface_0 p-2 w-fit rounded-md m-2">
+                <span class="font-bold underline text-2xl m-2">
+                    Accounts
+                </span>
+                <ul class="flex flex-col gap-2 m-2">
+                    <li>
+                        <a target="_" href="https://app.hackthebox.com/profile/462133" class="flex flex-row group cursor-pointer">
+                            <x-icons.www class="w-8 h-8 "/>
+                            <span class="my-auto px-2 text-lg font-bold">Hack The Box</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
             <hr>
+
+
             <div class="bg-Surface_0 p-2 w-fit rounded-md m-2">
                 <span class="font-bold underline text-2xl m-2">
                     Sites
@@ -67,23 +82,23 @@
                     @foreach(['ssh.ninja', 'expire.tech', 'pinks.world'] as $site)
                         <li>
                             @if($site == 'pinks.world')
-{{--                                <form action="{{route('home', ['warning' => $site])}}" method="get"--}}
-{{--                                      class="flex flex-row group cursor-pointer">--}}
-{{--                                    <input type="text" name="warning" hidden value="{{$site}}">--}}
-{{--                                    <button type="submit" class="flex flex-row group cursor-pointer">--}}
-{{--                                        <x-icons.www class="w-8 h-8 "/>--}}
-{{--                                        <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>--}}
-{{--                                    </button>--}}
-{{--                                </form>--}}
+                                {{--                                <form action="{{route('home', ['warning' => $site])}}" method="get"--}}
+                                {{--                                      class="flex flex-row group cursor-pointer">--}}
+                                {{--                                    <input type="text" name="warning" hidden value="{{$site}}">--}}
+                                {{--                                    <button type="submit" class="flex flex-row group cursor-pointer">--}}
+                                {{--                                        <x-icons.www class="w-8 h-8 "/>--}}
+                                {{--                                        <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>--}}
+                                {{--                                    </button>--}}
+                                {{--                                </form>--}}
                             @else
-                                <a href="https://{{$site}}" class="flex flex-row group cursor-pointer">
+                                <a target="_" href="https://{{$site}}" class="flex flex-row group cursor-pointer">
                                     <x-icons.www class="w-8 h-8 "/>
                                     <span class="my-auto px-2 text-lg font-bold">{{$site}}</span>
                                 </a>
                             @endif
 
 
-                    </li>
+                        </li>
                     @endforeach
 
                 </ul>
