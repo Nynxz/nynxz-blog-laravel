@@ -68,6 +68,12 @@
                             <span class="my-auto px-2 text-lg font-bold">Hack The Box</span>
                         </a>
                     </li>
+                    <li>
+                        <a target="_" href="https://tryhackme.com/r/p/nynxz" class="flex flex-row group cursor-pointer">
+                            <x-icons.www class="w-8 h-8 "/>
+                            <span class="my-auto px-2 text-lg font-bold">Try Hack Me</span>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
