@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'blog.title' => env('BLOG_TITLE', 'Blog Title'),
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*

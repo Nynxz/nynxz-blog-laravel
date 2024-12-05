@@ -2,6 +2,19 @@
 
 ---
 
+This is my 'blog site'. The stack is probably considered overkill for whats supposed to be a static blog, but I wanted something I could tinker with!
+
+Built with Laravel.
+
+Uses
+- Redis
+- MySQL
+- Tailwind CSS
+
+The idea behind this - Have this running on a cheap VPS, using Docker Compose
+Have a webhook on a repo containing your blog posts, on changes, pull on the VPS and sync the posts.
+
+I have tried not use Javascript, as it's just not required here.
 
 
 ## Artisan Commands
@@ -11,6 +24,10 @@
 
 
 
+
+- single file that defines fields that will be used in metadata (front matter) (taxonomy)
+- during sync - metadata proccessed
+  - checks first line for `---` , `+++` , `{` 
 
 
 

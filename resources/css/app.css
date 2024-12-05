@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+code {
+    @apply break-all overflow-x-scroll  break-words text-wrap;
+}
+
 .md h2 {
     @apply text-2xl font-bold;
 }
@@ -10,20 +14,20 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    @apply shadow-inner w-3;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
     @apply bg-Surface_2/30;
-    @apply rounded-md ;
+    @apply rounded-md shadow-inner shadow-black m-1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     /*@apply group-hover/a:bg-gradient-to-b group-hover/a:from-Blue group-hover/a:via-Mauve group-hover/a:from-10% group-hover/a:to-90% group-hover/a:to-Maroon ;*/
-    @apply bg-Surface_2 ;
-    @apply rounded-md;
+    @apply bg-Surface_2 shadow-lg drop-shadow-lg shadow-black ;
+    @apply rounded-md border-Crust border-2;
 }
 
 /* Handle on hover */
@@ -515,11 +519,17 @@
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 2em;
+    word-break: break-all;
+
 }
+
 
 .markdown-body ol ol,
 .markdown-body ul ol {
     list-style-type: lower-roman;
+}
+.markdown-body pre {
+    word-break: break-word;
 }
 
 .markdown-body ul ul ol,
@@ -856,6 +866,7 @@
     text-align: right;
 }
 
+
 .markdown-body span.align-right span img {
     margin: 0;
     text-align: right;
@@ -892,9 +903,14 @@
     margin: 0;
     font-size: 85%;
     white-space: break-spaces;
-    background-color: var(--bgColor-neutral-muted);
     border-radius: 6px;
 }
+
+pre {
+    @apply bg-Surface_0 rounded-md p-2 overflow-x-auto my-2;
+    /*background-color: var(--bgColor-neutral-muted);*/
+}
+
 
 .markdown-body code br,
 .markdown-body tt br {
@@ -914,13 +930,13 @@
 }
 
 .markdown-body pre>code {
-    /*    padding: 0;*/
-    /*    margin: 0;*/
-    /*    !*word-break: keep-all;*!*/
-    /*    white-space: pre;*/
+        padding: 0;
+        margin: 0;
+        word-break: keep-all;
+        white-space: pre;
     @apply break-all;
-    /*    !*background: transparent;*!*/
-    /*    border: 0;*/
+        background: transparent;
+        border: 0;
     /*    background-color:  red;*/
 }
 
@@ -930,13 +946,13 @@
 
 .markdown-body .highlight pre {
     margin-bottom: 0;
-    word-break: normal;
+    /*word-break: normal;*/
 }
 
 .markdown-body .highlight pre,
 .markdown-body pre {
     padding: var(--base-size-16);
-    overflow: auto;
+    /*overflow: auto;*/
     font-size: 85%;
     line-height: 1.45;
     color: var(--fgColor-default);
