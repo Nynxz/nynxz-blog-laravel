@@ -1,5 +1,9 @@
-First Post
-25/10/2024
+---
+date: 2024-12-04T13:01:00Z
+title: First Post
+tags:
+    - Test
+---
 
 # First Post
 

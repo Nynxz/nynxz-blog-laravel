@@ -1,5 +1,11 @@
-Simple API Gateway
-25/10/2024
+---
+date: 2024-12-05T13:01:00Z
+title: Simple API Gateway!
+tags:
+    - Web
+    - API
+---
+
 I have been working on a project and wanted to figure out a method of monitoring my API endpoints.
 I explored solutions like [Kong Gateway](https://konghq.com/products/kong-gateway) and while interesting I found it rather verbose for my needs.
 So instead I built a simple prototype gateway using:

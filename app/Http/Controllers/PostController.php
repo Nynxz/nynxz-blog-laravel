@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Cache;
+use Exception;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Storage;
 use Str;
+use Symfony\Component\Yaml\Yaml;
+use function preg_match;
 
 class PostController extends Controller
 {
@@ -40,13 +44,14 @@ class PostController extends Controller
         foreach ($topics as $topic) {
             $topic_posts = array();
             foreach (Storage::disk('blog-posts')->allFiles($topic) as $post) {
-                $f = Storage::disk('blog-posts')->path($post);
-                $f = file($f);
+                $filePath = Storage::disk('blog-posts')->path($post);
+                $yaml = PostController::frontmatter_extract($filePath);
+                $f = file($filePath);
                 $topic_posts[] = Post::create([
-                    'title' => rtrim($f[0]),
-                    'date' => rtrim($f[1]),
+                    'title' => $yaml['title'],
+                    'date' => Carbon::createFromTimestamp($yaml['date']),
                     'topic' => $topic,
-                    'slug' => Str::slug($topic.'-'.rtrim($f[0])),
+                    'slug' => Str::slug(hash('crc32', $topic.'-'.$yaml['title'].'-'.$filePath)),
                     'content' => implode((array)array_slice($f, 2))
                 ])->toArray();
             }
@@ -61,5 +66,19 @@ class PostController extends Controller
         Cache::flush();
 
         return $posts;
+    }
+
+
+    public static function frontmatter_extract(string $filePath){
+        $content = file_get_contents($filePath);
+        try{
+            if(!$content) throw new Exception("Failed to read the file at ");
+            if(preg_match('/^---\n(.*?)\n---\n/s', $content, $matches)){
+                $yamlString = $matches[1];
+                return Yaml::parse($yamlString);
+            }
+        } catch(Exception $e){
+            dd($e);
+        }
     }
 }
