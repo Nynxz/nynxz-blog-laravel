@@ -9,6 +9,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/post/{id}', [PostController::class, 'index'])->name('post')->middleware('throttle:30,1');
 
+Route::get('/tag', [HomeController::class, 'tags'])->name('tags');
+Route::get('/tag/{tag}', [HomeController::class, 'tag'])->name('tag');
+
 Route::fallback([HomeController::class, 'redirectToIndex']);
 
 Route::get('/confirmation', function (Request $request) {

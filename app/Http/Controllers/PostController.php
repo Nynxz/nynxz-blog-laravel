@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Cache;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -11,7 +12,6 @@ use Illuminate\View\View;
 use Storage;
 use Str;
 use Symfony\Component\Yaml\Yaml;
-use function preg_match;
 
 class PostController extends Controller
 {
@@ -47,13 +47,19 @@ class PostController extends Controller
                 $filePath = Storage::disk('blog-posts')->path($post);
                 $yaml = PostController::frontmatter_extract($filePath);
                 $f = file($filePath);
-                $topic_posts[] = Post::create([
+                $post =  Post::create([
                     'title' => $yaml['title'],
                     'date' => Carbon::createFromTimestamp($yaml['date']),
                     'topic' => $topic,
                     'slug' => Str::slug(hash('sha1', $topic.'-'.$yaml['title'].'-'.$filePath)),
                     'content' => implode((array)array_slice($f, 2))
-                ])->toArray();
+                ]);
+                $topic_posts[] = $post->toArray();
+
+                foreach ($yaml['tags'] as $tag) {
+                    $t = Tag::firstOrCreate(['name' => $tag]);
+                    $post->tags()->save($t);
+                }
             }
             $posts[$topic] = [
                 'title' => $topic,

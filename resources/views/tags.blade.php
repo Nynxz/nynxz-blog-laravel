@@ -28,20 +28,16 @@
             </div>
             <div class="grid grid-flow-col gap-2 rounded-md w-full  bg-Surface_0/75 border-2 border-Crust h-full">
                 <ul class="md:p-2 p-1 md:m-2 m-1 md:gap-2 gap-1 flex flex-col transition-all duration-500">
-                    @foreach($posts as $post)
+                    @foreach($tags as $tag)
                         <li class="bg-Surface_0  relative border-Crust border-[1px] rounded-md w-full flex group/post hover:shadow-black/30  hover:shadow-lg transition-all duration-500">
-                            <a class=" absolute w-full h-full rounded-md" href="{{route('post', $post->slug)}}"></a>
-                            <div href="{{route('post', $post->slug)}}" class="font-extrabold  w-full p-2 rounded-md z-[1] pointer-events-none">
-                                {{$post->title}}
-                                @foreach($post->tags as $tag)
-                                    <a href="/tag/{{ strtolower($tag->name) }}" class="pointer-events-auto bg-Surface_1 text-xs rounded-md px-2 h-fit hover:bg-Pink hover:text-Base transition-colors duration-200">{{ $tag->name }}</a>
-                                @endforeach
+                            <a class=" absolute w-full h-full rounded-md" href="{{route('tag', strtolower($tag->name))}}"></a>
+                            <div href="{{route('tag', $tag->name)}}" class="font-extrabold  w-full p-2 rounded-md z-[1] pointer-events-none">
+                                {{$tag->name}}
                                 <hr class=" rounded-md my-1 group-hover/post:border-Pink border-[1px] border-Surface_2 transition-colors duration-500"/>
                             <span class="font-semibold">
-                                {{Carbon::create($post->date)->toFormattedDateString('M d/m/Y')}} |
+                                {{$tag->posts_count}} Posts
                             </span>
                             <span class="text-xs font-medium">
-                                {{Carbon::create($post->date)->diffForHumans()}}
                             </span>
                             </div>
                         </li>

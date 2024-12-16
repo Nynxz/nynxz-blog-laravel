@@ -5,6 +5,7 @@ namespace App\Models;
 use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
@@ -23,6 +24,10 @@ class Post extends Model
             $posts = Post::all(['title', 'topic', 'slug'])->toArray();
             return Post::_group_by($posts, 'topic');
         });
+    }
+
+    public function tags(): BelongsToMany  {
+        return $this->belongsToMany(Tag::class);
     }
 
     private static function _group_by($array, $key): array
