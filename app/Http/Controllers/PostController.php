@@ -51,7 +51,7 @@ class PostController extends Controller
                     'title' => $yaml['title'],
                     'date' => Carbon::createFromTimestamp($yaml['date']),
                     'topic' => $topic,
-                    'slug' => Str::slug(hash('crc32', $topic.'-'.$yaml['title'].'-'.$filePath)),
+                    'slug' => Str::slug(hash('sha1', $topic.'-'.$yaml['title'].'-'.$filePath)),
                     'content' => implode((array)array_slice($f, 2))
                 ])->toArray();
             }
