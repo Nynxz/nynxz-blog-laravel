@@ -9,13 +9,16 @@
             <span>
             {{$post['title']}}
             </span>
-            <span>
-            {{$post['date']}}<br>
-                {{Carbon::create($post['date'])->diffForHumans()}}
-            </span>
         </span>
         <hr class="border-Mauve my-2">
             <div class="max-h-0">
+                @foreach($post->tags as $tag)
+                    <a href="/tag/{{ strtolower($tag->name) }}" class="pointer-events-auto bg-Surface_1 text-xs rounded-md px-2 h-fit hover:bg-Pink hover:text-Base transition-colors duration-200">{{ $tag->name }}</a>
+                @endforeach
+                <span>
+                    {{Carbon::create($post['date'])->diffForHumans()}} |
+                    {{$post['date']}}
+                </span>
                 <!--email_off-->
                 {!!  Str::markdown($post['content'])!!}
                 <!--/email_off-->
