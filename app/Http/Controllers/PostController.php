@@ -28,15 +28,23 @@ class PostController extends Controller
 
     private static function DeleteAllPosts(): void
     {
-
         $db = Post::all();
         foreach($db as $p){
             $p->delete();
         }
     }
+
+    private static function DeleteAllTags(): void
+    {
+        $db = Tag::all();
+        foreach($db as $t){
+            $t->delete();
+        }
+    }
     public static function SyncPosts(): array
     {
         PostController::DeleteAllPosts();
+        PostController::DeleteAllTags();
 
         $posts = array();
         $topics = Storage::disk('blog-posts')->allDirectories();
